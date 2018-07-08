@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkellehe <jkellehe@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/18 18:25:25 by jkellehe          #+#    #+#             */
-/*   Updated: 2018/06/27 16:23:06 by jkellehe         ###   ########.fr       */
+/*   Created: 2018/06/25 14:51:26 by jkellehe          #+#    #+#             */
+/*   Updated: 2018/07/05 12:58:42 by jkellehe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcpy(char *dst, char *src)
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	int		i;
+	t_list *res;
+	t_list *iter;
 
-	i = 0;
-	while (src[i] != '\0')
+	if (!lst)
+		return (NULL);
+	res = (t_list*)malloc(sizeof(lst));
+	iter = (t_list*)malloc(sizeof(lst));
+	res = f(ft_lstnew(lst->content, lst->content_size));
+	iter = res;
+	lst = lst->next;
+	while (lst)
 	{
-		dst[i] = src[i];
-		i++;
+		iter->next = f(ft_lstnew(lst->content, lst->content_size));
+		lst = lst->next;
+		iter = iter->next;
 	}
-	dst[i] = '\0';
-	return (dst);
+	return (res);
 }

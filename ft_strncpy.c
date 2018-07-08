@@ -6,7 +6,7 @@
 /*   By: jkellehe <jkellehe@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/18 18:31:03 by jkellehe          #+#    #+#             */
-/*   Updated: 2018/06/23 15:19:47 by jkellehe         ###   ########.fr       */
+/*   Updated: 2018/06/30 13:02:38 by jkellehe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 char	*ft_strncpy(char *dst, const char *src, size_t len)
 {
-	int		i;
+	size_t		i;
 
 	i = 0;
-	while (i < (int)len)
+	while (i < len)
 	{
 		if (src[i] != '\0')
 		{
@@ -25,7 +25,11 @@ char	*ft_strncpy(char *dst, const char *src, size_t len)
 		}
 		else
 		{
-			dst[i] = '\0';
+			while (i < len)
+			{
+				dst[i] = '\0';
+				i++;
+			}
 		}
 		i++;
 	}

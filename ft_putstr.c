@@ -6,7 +6,7 @@
 /*   By: jkellehe <jkellehe@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/21 11:52:55 by jkellehe          #+#    #+#             */
-/*   Updated: 2018/06/21 14:17:31 by jkellehe         ###   ########.fr       */
+/*   Updated: 2018/07/03 16:25:22 by jkellehe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	ft_putstr(char const *s)
 {
+	if (!s)
+		return ;
 	while (*s != '\0')
 	{
 		write(1, s, 1);

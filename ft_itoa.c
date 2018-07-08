@@ -6,34 +6,41 @@
 /*   By: jkellehe <jkellehe@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/21 11:45:42 by jkellehe          #+#    #+#             */
-/*   Updated: 2018/06/21 22:36:29 by jkellehe         ###   ########.fr       */
+/*   Updated: 2018/07/06 16:29:42 by jkellehe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-char	*ft_itoa(int n)
+static	int		count_size(int n)
 {
-	char	*res;
-	char	*rev;
+	size_t		i;
 
-	res = (char*)malloc(sizeof(char*));
-	rev = (char*)malloc(sizeof(char*));
-	*rev = 46;
-	rev++;
-	while (n > 0)
+	i = 1;
+	while (n /= 10)
+		i++;
+	return (i);
+}
+
+char			*ft_itoa(int n)
+{
+	char			*str;
+	int				len;
+	unsigned int	tmp;
+
+	len = count_size(n);
+	tmp = n;
+	if (n < 0)
 	{
-		*rev = (char)malloc(sizeof(char));
-		*rev = n % 10;
-		n /= 10;
-		rev++;
+		tmp = -n;
+		len++;
 	}
-	while (*rev != 46)
-	{
-		*res = *rev;
-		res++;
-		rev--;
-	}
-	return (res);
+	if (!(str = ft_strnew(len)))
+		return (NULL);
+	str[--len] = tmp % 10 + '0';
+	while (tmp /= 10)
+		str[--len] = tmp % 10 + '0';
+	if (n < 0)
+		str[0] = '-';
+	return (str);
 }

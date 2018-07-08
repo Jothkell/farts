@@ -6,18 +6,18 @@
 /*   By: jkellehe <jkellehe@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/20 13:04:25 by jkellehe          #+#    #+#             */
-/*   Updated: 2018/06/21 17:37:44 by jkellehe         ###   ########.fr       */
+/*   Updated: 2018/07/05 15:08:46 by jkellehe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 void	*ft_memalloc(size_t size)
 {
-	char	*res;
+	void	*res;
 
-	res = malloc(size);
-	*res = 0;
-	return ((void*)res);
+	if (!(res = malloc(size)))
+		return (NULL);
+	ft_bzero(res, size);
+	return (res);
 }

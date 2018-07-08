@@ -6,7 +6,7 @@
 /*   By: jkellehe <jkellehe@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/21 11:57:54 by jkellehe          #+#    #+#             */
-/*   Updated: 2018/06/21 14:16:48 by jkellehe         ###   ########.fr       */
+/*   Updated: 2018/07/02 19:48:03 by jkellehe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void	ft_putnbr(int n)
 {
-	ft_putstr(ft_itoa(n));
+	ft_putnbr_fd(n, 1);
 }

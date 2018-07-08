@@ -6,7 +6,7 @@
 /*   By: jkellehe <jkellehe@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/20 13:18:37 by jkellehe          #+#    #+#             */
-/*   Updated: 2018/06/21 21:57:16 by jkellehe         ###   ########.fr       */
+/*   Updated: 2018/06/28 18:04:05 by jkellehe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ char	*ft_strnew(size_t size)
 	int		i;
 
 	i = 0;
-	res = (char*)malloc(size);
+	size++;
+	if (!(res = (char*)malloc(sizeof(char) * size)))
+		return (NULL);
 	while (i < (int)size)
 	{
 		res[i] = '\0';

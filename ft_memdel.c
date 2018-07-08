@@ -6,7 +6,7 @@
 /*   By: jkellehe <jkellehe@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/20 13:09:19 by jkellehe          #+#    #+#             */
-/*   Updated: 2018/06/21 14:14:40 by jkellehe         ###   ########.fr       */
+/*   Updated: 2018/07/03 16:09:56 by jkellehe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 void	ft_memdel(void **ap)
 {
-	if (ap != NULL)
-	{
-		free(*ap);
-		ap = NULL;
-	}
+	if (ap == NULL)
+		return ;
+	free(*ap);
+	*ap = NULL;
 }

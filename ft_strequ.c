@@ -6,7 +6,7 @@
 /*   By: jkellehe <jkellehe@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/20 15:33:57 by jkellehe          #+#    #+#             */
-/*   Updated: 2018/06/21 21:34:02 by jkellehe         ###   ########.fr       */
+/*   Updated: 2018/07/03 16:19:19 by jkellehe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,10 @@ int		ft_strequ(char const *s1, char const *s2)
 {
 	int		res;
 
+	if ((!s1 && s2) || (s1 && !s2))
+		return (0);
+	if (!s1 && !s2)
+		return (1);
 	res = ft_strcmp(s1, s2);
 	if (res != 0)
 		return (0);

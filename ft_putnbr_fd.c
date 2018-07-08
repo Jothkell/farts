@@ -6,7 +6,7 @@
 /*   By: jkellehe <jkellehe@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/21 13:08:58 by jkellehe          #+#    #+#             */
-/*   Updated: 2018/06/21 13:13:46 by jkellehe         ###   ########.fr       */
+/*   Updated: 2018/07/02 19:49:28 by jkellehe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,8 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	ft_putstr_fd(ft_itoa(n), fd);
+	if (n == -2147483648)
+		ft_putstr_fd("-2147483648", fd);
+	else
+		ft_putstr_fd(ft_itoa(n), fd);
 }

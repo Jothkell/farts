@@ -6,7 +6,7 @@
 /*   By: jkellehe <jkellehe@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/20 15:10:08 by jkellehe          #+#    #+#             */
-/*   Updated: 2018/06/21 14:20:26 by jkellehe         ###   ########.fr       */
+/*   Updated: 2018/07/07 15:00:24 by jkellehe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 
 void	ft_striter(char *s, void (*f)(char*))
 {
+	if (s == NULL)
+		return ;
+	if (f == NULL)
+		return ;
 	while (*s != '\0')
 	{
 		f(s);

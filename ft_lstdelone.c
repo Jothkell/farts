@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkellehe <jkellehe@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/18 18:25:25 by jkellehe          #+#    #+#             */
-/*   Updated: 2018/06/27 16:23:06 by jkellehe         ###   ########.fr       */
+/*   Created: 2018/06/25 14:05:46 by jkellehe          #+#    #+#             */
+/*   Updated: 2018/07/06 15:50:21 by jkellehe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcpy(char *dst, char *src)
+void	ft_lstdelone(t_list **alst, void (*del)(void *, size_t))
 {
-	int		i;
-
-	i = 0;
-	while (src[i] != '\0')
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = '\0';
-	return (dst);
+	del((*alst)->content, (*alst)->content_size);
+	ft_memdel((void**)alst);
 }

@@ -6,7 +6,7 @@
 /*   By: jkellehe <jkellehe@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/20 15:17:06 by jkellehe          #+#    #+#             */
-/*   Updated: 2018/06/21 22:29:58 by jkellehe         ###   ########.fr       */
+/*   Updated: 2018/07/05 15:05:55 by jkellehe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,15 @@ char	*ft_strmap(char const *s, char (*f)(char))
 	char	*res;
 
 	i = 0;
-	res = (char*)malloc(sizeof(s));
+	if (s == NULL)
+		return (NULL);
+	if (!(res = (char*)malloc(sizeof(char) * (ft_strlen(s) + 1))))
+		return (NULL);
 	while (s[i] != '\0')
 	{
-		res[i] = (char)malloc(sizeof(char));
 		res[i] = f(s[i]);
 		i++;
 	}
+	res[i] = '\0';
 	return (res);
 }

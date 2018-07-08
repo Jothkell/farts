@@ -1,41 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkellehe <jkellehe@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/20 18:22:39 by jkellehe          #+#    #+#             */
-/*   Updated: 2018/07/03 16:22:48 by jkellehe         ###   ########.fr       */
+/*   Created: 2018/06/25 13:15:23 by jkellehe          #+#    #+#             */
+/*   Updated: 2018/07/07 14:39:57 by jkellehe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-char	*ft_strjoin(char const *s1, char const *s2)
+t_list		*ft_lstnew(void const *content, size_t content_size)
 {
-	int		i;
-	int		j;
-	char	*res;
+	t_list	*res;
 
-	i = 0;
-	j = 0;
-	if (!s1 || !s2)
+	if (!(res = (t_list*)malloc(sizeof(t_list))))
 		return (NULL);
-	if (!(res = (char*)malloc(sizeof(s1) + sizeof(s2) + 1)))
+	if (!(res->content = (t_list*)malloc(sizeof(content) * content_size)))
 		return (NULL);
-	while (s1[i] != '\0')
+	if (content == NULL)
 	{
-		res[i] = s1[i];
-		i++;
+		res->content = NULL;
+		res->content_size = 0;
+		res->next = NULL;
 	}
-	while (s2[j] != '\0')
+	else
 	{
-		res[i] = s2[j];
-		i++;
-		j++;
+		res->content = ft_memcpy(res->content, content, content_size);
+		res->content_size = content_size;
+		res->next = NULL;
 	}
-	res[i] = '\0';
 	return (res);
 }

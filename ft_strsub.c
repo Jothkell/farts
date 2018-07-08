@@ -6,7 +6,7 @@
 /*   By: jkellehe <jkellehe@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/20 15:43:10 by jkellehe          #+#    #+#             */
-/*   Updated: 2018/06/21 22:03:08 by jkellehe         ###   ########.fr       */
+/*   Updated: 2018/07/03 16:22:13 by jkellehe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len)
 
 	i = 0;
 	max = start + len;
-	res = (char*)malloc(sizeof(char) * len);
+	if (s == NULL)
+		return (NULL);
+	if (!(res = (char*)malloc(sizeof(char) * (len + 1))))
+		return (NULL);
 	while ((int)start < max)
 	{
 		res[i] = s[start];

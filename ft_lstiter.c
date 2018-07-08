@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkellehe <jkellehe@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/18 18:25:25 by jkellehe          #+#    #+#             */
-/*   Updated: 2018/06/27 16:23:06 by jkellehe         ###   ########.fr       */
+/*   Created: 2018/06/25 14:35:08 by jkellehe          #+#    #+#             */
+/*   Updated: 2018/07/03 15:35:32 by jkellehe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcpy(char *dst, char *src)
+void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))
 {
-	int		i;
-
-	i = 0;
-	while (src[i] != '\0')
+	if (!lst)
+		return ;
+	while (lst->next != NULL)
 	{
-		dst[i] = src[i];
-		i++;
+		f(lst);
+		lst = lst->next;
 	}
-	dst[i] = '\0';
-	return (dst);
+	f(lst);
 }

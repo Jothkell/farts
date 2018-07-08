@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jkellehe <jkellehe@student.42.us.org>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/18 18:25:25 by jkellehe          #+#    #+#             */
-/*   Updated: 2018/06/27 16:23:06 by jkellehe         ###   ########.fr       */
+/*   Created: 2018/06/25 14:25:38 by jkellehe          #+#    #+#             */
+/*   Updated: 2018/07/06 15:50:46 by jkellehe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcpy(char *dst, char *src)
+void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
-	int		i;
-
-	i = 0;
-	while (src[i] != '\0')
+	while ((*alst)->next)
 	{
-		dst[i] = src[i];
-		i++;
+		del((*alst)->content, (*alst)->content_size);
+		(*alst)->content_size = 0;
+		*alst = (*alst)->next;
 	}
-	dst[i] = '\0';
-	return (dst);
+	del((*alst)->content, (*alst)->content_size);
+	(*alst)->content_size = 0;
+	ft_memdel((void**)alst);
 }
